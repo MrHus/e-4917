@@ -64,11 +64,25 @@
   []
   (println (nth @program (inc @ip))))
   
-(defn load-r0 "Load value at addres into r0" [n] (set-ref! r0 (nth @program n)))    
-(defn load-r1 "Load value at addres into r1" [n] (set-ref! r1 (nth @program n)))
+(defn load-r0 
+	"Load value at addres into r0" 
+	[n] 
+	(set-ref! r0 (nth @program n)))    
+
+(defn load-r1 
+	"Load value at addres into r1" 
+	[n] 
+	(set-ref! r1 (nth @program n)))
     
-(defn store-r0 "Store R0 into address n" [n] (set-ref! program (assoc @program n @r0)))
-(defn store-r1 "Store R1 into address n" [n] (set-ref! program (assoc @program n @r1)))
+(defn store-r0 
+	"Store R0 into address n" 
+	[n] 
+	(set-ref! program (assoc @program n @r0)))
+
+(defn store-r1 
+	"Store R1 into address n" 
+	[n] 
+	(set-ref! program (assoc @program n @r1)))
 
 (defn jump "Jump to n" [n] (set-ref! ip (- n 2)))  ; Its n - 2 because of the increase by 2 (jump is 2 byte) of the Instruction Pointer in the run function.
   
