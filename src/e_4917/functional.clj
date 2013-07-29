@@ -75,7 +75,7 @@
 (defn jump 
   "Jump to n"
   [{:keys [memory r0 r1 ip is]}]
-  (State. memory  r0 r1 (nth memory (inc ip)) 13))
+  (State. memory r0 r1 (nth memory (inc ip)) 13))
 
 (defn jump-if-zero
   "Jump to address <data> if R0 == 0"
@@ -94,8 +94,8 @@
 (defn step
   "Takes a State looks at the current instruction and executes it."
   [^State state]
-  (let [cur (try (nth (:memory state) (:ip state)) (catch Exception _ 0))]
-    (if (not (zero? cur))
+  (let [current (try (nth (:memory state) (:ip state)) (catch Exception _ 0))]
+    (if (not (zero? current))
       (cond 
         (= cur 1) (add state)
         (= cur 2) (subtract state)
