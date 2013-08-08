@@ -94,8 +94,8 @@
 (defn step
   "Takes a State looks at the current instruction and executes it."
   [^State state]
-  (let [current (try (nth (:memory state) (:ip state)) (catch Exception _ 0))]
-    (if (not (zero? current))
+  (let [cur (try (nth (:memory state) (:ip state)) (catch Exception _ 0))]
+    (if (not (zero? cur))
       (cond 
         (= cur 1) (add state)
         (= cur 2) (subtract state)
